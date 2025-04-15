@@ -99,7 +99,7 @@ QStringList APMFirmwarePlugin::flightModes(Vehicle *vehicle) const
     Q_UNUSED(vehicle)
     QStringList flightModesList;
     for (const FirmwareFlightMode &mode : _flightModeList) {
-        if (mode.canBeSet){
+        if (mode.canBeSet && (mode.mode_name == "Loiter" || mode.mode_name == "Auto")){ //WHS ROBLAB HUGIN MODIFICATION
             flightModesList += mode.mode_name;
         }
     }
